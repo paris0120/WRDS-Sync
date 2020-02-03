@@ -30,6 +30,7 @@ public class WRDS
 		options.addOption("o", false, "Output path");
 		options.addOption("u", false, "User name");
 		options.addOption("p", false, "Password"); 
+		options.addOption("r", false, "WinRAR"); 
 		options.addOption(new Option("n", "New backup")); 
     	
     	
@@ -59,8 +60,12 @@ public class WRDS
 	        if(cmd.hasOption("n")) {
 	        	sftp.startNewTask();
 	        }
+	        if(cmd.hasOption("r")) {
+	        	sftp.setWinRAR(cmd.getOptionValue('r'));;
+	        }
 	        sftp.printInfo();
 	        if(sftp.connect()) {
+	        	sftp.archiveAllFiles();
 	        	try {
 					sftp.download();
 				} catch (SftpException e) {
