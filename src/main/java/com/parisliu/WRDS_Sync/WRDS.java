@@ -26,10 +26,11 @@ public class WRDS
     {
     	// create Options object
     	Options options = new Options();
-		options.addOption("f", false, "Download folder");
+		options.addOption("f", false, "Remote Download folder");
 		options.addOption("o", false, "Output path");
 		options.addOption("u", false, "User name");
 		options.addOption("p", false, "Password"); 
+		options.addOption("s", false, "Save password (N for not saving, otherwise save)"); 
 		options.addOption("r", false, "WinRAR"); 
 		options.addOption(new Option("n", "New backup")); 
     	
@@ -57,11 +58,19 @@ public class WRDS
 	        if(cmd.hasOption("f")) {
 	        	sftp.setFolder(cmd.getOptionValue("f")); 	        	
 	        }
+	        if(cmd.hasOption("s")) {
+	        	if(cmd.getOptionValue("f").equalsIgnoreCase("N")) {
+		        	sftp.setSavePassword(false);	        		
+	        	}	        	
+	        }
 	        if(cmd.hasOption("n")) {
 	        	sftp.startNewTask();
 	        }
 	        if(cmd.hasOption("r")) {
 	        	sftp.setWinRAR(cmd.getOptionValue('r'));;
+	        }
+	        if(sftp.getWinRAR()==null || sftp.getWinRAR().length()==0) {
+	        	sftp.setWinRAR("C:\\Program Files\\WinRAR");
 	        }
 	        sftp.printInfo();
 	        if(sftp.connect()) {
