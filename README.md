@@ -1,7 +1,7 @@
 # WRDS-Sync
 Sync data from WRDS SFTP server to local hard drive.
 
-* Options:
+Options:
 	* f: Remote Download folder (Default value is the root folder)
 	* o: Output path (Default value is the current folder)
 	* u: User name (If not specified, you will be asked later)
@@ -18,7 +18,7 @@ The saved option values can be overrided by options or can be changed in the 'co
  
 
 
-1. Quick Start:
+Quick Start:
 	1. Download the latest file from release.
  	1. Copy the rel	ease file to the destination folder.
  	1. Open command console (cmd).
