@@ -74,7 +74,7 @@ public class WRDS
 	        }
 	        sftp.printInfo();
 	        if(sftp.connect()) {
-	        	sftp.archiveAllFiles();
+	        	//sftp.archiveAllFiles();
 	        	try {
 					sftp.download();
 				} catch (SftpException e) {
